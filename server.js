@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Define the routes
 
-//task router
+//Facility router
 app.use('/facility', facilityRouter);
 
 
