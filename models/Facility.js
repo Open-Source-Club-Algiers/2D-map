@@ -51,4 +51,24 @@ const getAllFacilityModel = async () => {
     }
 };
 
-module.exports = { getAllFacilityModel, addFacilityModel };
+const searchFacilitiesModel = async (searchTerm) => {
+    try {
+        const facilities = await Facility.find({ Name: new RegExp(searchTerm, 'i') });
+        return facilities;
+    } catch (error) {
+        throw new Error('Error searching facilities: ' + error.message);
+    }
+};
+
+// Function to get a facility by ID
+const getFacilityByIdModel = async (id) => {
+    try {
+        const facility = await Facility.findById(id); // Fetch facility by ID
+        return facility;
+    } catch (error) {
+        throw new Error('Error fetching facility by ID: ' + error.message);
+    }
+};
+
+module.exports = { getAllFacilityModel, addFacilityModel, searchFacilitiesModel, getFacilityByIdModel  };
+

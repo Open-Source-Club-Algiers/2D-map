@@ -1,10 +1,10 @@
-require('dotenv').config()
+require('dotenv').config();
+
 const express = require('express'); // Import Express
 const app = express(); // Create an Express application
 const facilityRouter = require('./routes/facility')
 
 const mongoose = require('mongoose');
-
 
 
 // Middleware to parse JSON requests (so the req can access the json body in req.body in the controllers)
@@ -16,15 +16,10 @@ app.use(express.json());
 app.use('/facility', facilityRouter);
 
 
-
-
-
-
 // middleware to handle 404 errors (if the requested route doesn't exist)
 app.use('/*', (req, res) => {
     res.status(404).send('Page not found');
 });
-
 
 
 // database connection mongodb in this case
